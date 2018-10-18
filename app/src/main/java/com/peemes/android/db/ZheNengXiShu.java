@@ -7,18 +7,26 @@ import org.litepal.crud.DataSupport;
  */
 
 public class ZheNengXiShu extends DataSupport {
-    private int id ;
+    private String id ;
     private String name;
-    private double val;
+    private String val;
     private String meaning;
     private String uom;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
     }
 
     public String getName() {
@@ -27,14 +35,6 @@ public class ZheNengXiShu extends DataSupport {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public double getVal() {
-        return val;
-    }
-
-    public void setVal(double val) {
-        this.val = val;
     }
 
     public String getMeaning() {

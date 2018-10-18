@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.peemes.android">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name= "org.litepal.LitePalApplication"
         android:allowBackup="true"
@@ -9,13 +9,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".service.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"
+                  android:label="乙烯生产能效监测与评估"/>
+        <activity android:name=".service.RegisterActivity"
+            android:label="用户注册"/>
+        <activity android:name=".service.ModifyPasswordActivity"
+            android:label="密码修改"></activity>
     </application>
 
 </manifest>
