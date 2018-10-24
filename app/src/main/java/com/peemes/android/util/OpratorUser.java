@@ -7,6 +7,7 @@ import com.peemes.android.db.User;
 import org.litepal.LitePal;
 import org.litepal.crud.DataSupport;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,6 +18,7 @@ public class OpratorUser {
     //自己创建一个用户表格在安卓系统中，从服务器中读出的数据总是格式不对（JSON格式不对），解析不出来
     //升级和创建数据库
     public  void createAndUpdataDatabases(){
+
         LitePal.getDatabase();
     }
     //往SQLite中添加数据
@@ -28,6 +30,7 @@ public class OpratorUser {
         user1.setPartmentID(user.getPartmentID());
         user1.setPrivGrade(user.getPrivGrade());
         user1.setLastLogin(user.getLastLogin());
+        user1.setLastLogin(getNewDate());
         boolean temp = user1.save();
         if (temp) {
             Log.d("OperatorUser","添加数据到数据库中成功");
@@ -83,5 +86,36 @@ public class OpratorUser {
             }
         }
         return false;
+    }
+    public boolean queryUserIDAndUserName(String name,String userID){
+        List<User> userList = DataSupport.findAll(User.class);
+        for(User user : userList){
+            if ((user.getUserName().equals(name)) && (user.getUserID().equals(userID))) {
+                return true;
+            }else{
+                Log.d("OperatorUser","数据库中无该用户，或者用户名和用户号不匹配");
+                return false;
+            }
+        }
+        return false;
+    }
+    //获取当前系统的时间，并放回
+    public String getNewDate(){
+        String  newDate = null;
+        Date date = new Date();
+        String dateYear = String.format("%tF",date);
+        String dateTime = String.format("%tr",date);
+        newDate = dateYear+" "+dateTime;
+        return newDate;
+    }
+    //更新每次登录的时间,根据登录的用户进行更新
+    public void updateLastLogin(String name){
+        List<User> userList = DataSupport.findAll(User.class);
+        for(User users:userList){
+            if (users.getUserName().equals(name)) {
+                users.setLastLogin(getNewDate());
+                users.updateAll("userName = ?",name );
+            }
+        }
     }
 }

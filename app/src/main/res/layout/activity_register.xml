@@ -15,58 +15,49 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/register_account_text"
                 android:hint="请输入您的姓名"
-                android:textSize="20sp"
-                android:focusableInTouchMode="false"/>
+                android:textSize="20sp" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/register_password_text"
                 android:hint ="请输入您的密码"
-                android:textSize="20sp"
-                android:focusableInTouchMode="false"/>
+                android:textSize="20sp" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/affirm_register_password_text"
                 android:hint ="请确认您的密码"
-                android:textSize="20sp"
-                android:focusableInTouchMode="false"/>
+                android:textSize="20sp" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/register_user_id"
-                android:hint="请输入您的用户号"
-                android:focusableInTouchMode="false"/>
+                android:hint="请输入您的用户号" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/affirm_register_user_id"
-                android:hint="请确认您的用户号"
-                android:focusableInTouchMode="false"/>
+                android:hint="请确认您的用户号" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/register_partment_id"
-                android:hint="请输入您的部门号"
-                android:focusableInTouchMode="false"/>
+                android:hint="请输入您的部门号" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/affrim_register_partment_id"
-                android:hint="请确认您的部门号"
-                android:focusableInTouchMode="false"/>
+                android:hint="请确认您的部门号" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/register_prvi_grade"
-                android:hint="请输入您的级别（数字即可）"
-                android:focusableInTouchMode="false"/>
+                android:hint="请输入您的级别（数字即可）" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/affirm_register_prvi_grade"
-                android:hint="请确认您的级别（数字即可）"
-                android:focusableInTouchMode="false"/>
+                android:hint="请确认您的级别（数字即可）" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

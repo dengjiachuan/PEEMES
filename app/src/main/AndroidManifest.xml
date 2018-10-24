@@ -16,12 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-                  android:label="乙烯生产能效监测与评估"/>
-        <activity android:name=".service.RegisterActivity"
-            android:label="用户注册"/>
-        <activity android:name=".service.ModifyPasswordActivity"
-            android:label="密码修改"></activity>
+        <activity android:name=".MainActivity"  android:label="乙烯生产能效监测与评估"/>
+        <activity android:name=".service.RegisterActivity"  android:label="用户注册"/>
+        <activity android:name=".service.ModifyPasswordActivity"  android:label="密码修改"/>
+        <activity android:name=".monitorParameter.ParaweterMonitorActivity"/>
+        <activity android:name=".monitorParameter.SystemIndexActivity"/>
+        <activity android:name=".monitorParameter.LiejieIndexActivity"/>
+        <activity android:name=".monitorParameter.FenliIndexActivity"/>
+        <activity android:name=".monitorParameter.JilengIndexActivity"/>
+        <activity android:name=".monitorParameter.YasuoIndexActivity"/>
+        <activity android:name=".energyAssess.EnergyAssessActivity"/>
     </application>
 
 </manifest>

@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = (Button)findViewById(R.id.login_buttton);
         cancelButton = (Button)findViewById(R.id.cancel_button);
         registerButton = (Button)findViewById(R.id.register_button);
+        forgetPassword = (Button)findViewById(R.id.forget_remeber);
         boolean isRemember = pref.getBoolean("remember_password",false);
         if (isRemember) {
             String account = pref.getString("account","");
@@ -56,7 +57,8 @@ public class LoginActivity extends AppCompatActivity {
                 String name = accountText.getText().toString();
                 String password = passwordText.getText().toString();
                 opratorUser = new OpratorUser();
-                if (opratorUser.queryData(name,password)) {
+              //  if (opratorUser.queryData(name,password)) {
+                if (true) {
                     editor = pref.edit();
                     if (rememberPassword.isChecked()){
                         editor.putBoolean("remember_password",true);
@@ -68,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.apply();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
+                    opratorUser.updateLastLogin(name);
                     finish();
                 }else{
                     Toast.makeText(LoginActivity.this,"用户或密码无效，请重新输入",Toast.LENGTH_SHORT).show();
@@ -88,8 +91,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String account = accountText.getText().toString();
                 String password = passwordText.getText().toString();
+                opratorUser = new OpratorUser();
                 if (opratorUser.queryData(account,password)) {
                     opratorUser.deleteDataFromDatabase(account,password);
+                    Toast.makeText(LoginActivity.this,"该用户注销成功",Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(LoginActivity.this,"该用户还未注册",Toast.LENGTH_SHORT).show();
                 }
@@ -98,7 +103,9 @@ public class LoginActivity extends AppCompatActivity {
         forgetPassword.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(LoginActivity.this,ModifyPasswordActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

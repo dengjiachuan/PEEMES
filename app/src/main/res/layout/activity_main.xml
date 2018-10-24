@@ -6,20 +6,26 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/parameter_monitor"
+        android:id="@+id/main_button_parameter_monitor"
         android:text="参数监测"
         android:textSize="20sp"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/assess_energy"
+        android:id="@+id/main_button_assess_energy"
         android:text="能效评估"
         android:textSize="20sp"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/other_parameter"
-        android:text="其他参数"
+        android:id="@+id/main_button_zheNeng_parameter"
+        android:text="折能参数"
+        android:textSize="20sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_button_indexStandard"
+        android:text="指标基准值"
         android:textSize="20sp"/>
 
 </LinearLayout>

@@ -4,5 +4,6 @@
     <list>
         <mapping class = "com.peemes.android.db.User" />
         <mapping class = "com.peemes.android.db.ZheNengXiShu" />
+        <mapping class="com.peemes.android.db.IndexStandardVal"/>
     </list>
 </litepal>

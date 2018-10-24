@@ -5,7 +5,6 @@ import android.util.Log;
 
 import com.peemes.android.db.IndexStandardVal;
 import com.peemes.android.db.User;
-import com.peemes.android.db.ZheNengXiShu;
 
 import org.json.JSONArray;
 import org.json.JSONException;
