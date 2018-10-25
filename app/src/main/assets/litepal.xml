@@ -3,7 +3,7 @@
     <version value = "2"/>
     <list>
         <mapping class = "com.peemes.android.db.User" />
-        <mapping class = "com.peemes.android.db.ZheNengXiShu" />
         <mapping class="com.peemes.android.db.IndexStandardVal"/>
+        <mapping class="com.peemes.android.ZheNengCoefficient.ZheNengParameter"/>
     </list>
 </litepal>

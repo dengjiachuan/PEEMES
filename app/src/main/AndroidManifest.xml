@@ -26,6 +26,7 @@
         <activity android:name=".monitorParameter.JilengIndexActivity"/>
         <activity android:name=".monitorParameter.YasuoIndexActivity"/>
         <activity android:name=".energyAssess.EnergyAssessActivity"/>
+        <activity android:name=".ZheNengCoefficient.ZheNengCoefficientActivity"/>
     </application>
 
 </manifest>

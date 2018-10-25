@@ -48,7 +48,7 @@ public class PraseAndHandleJSONUtil {
         return false;
     }
     //解析和处理服务器返回的折能系数
-    public static boolean handleZheNengXiShuResponse(String response){
+    /*public static boolean handleZheNengXiShuResponse(String response){
         if (!TextUtils.isEmpty(response)) {
             try{
                 JSONArray allZheNengXiShu = new JSONArray(response);
@@ -69,7 +69,7 @@ public class PraseAndHandleJSONUtil {
             }
         }
         return false;
-    }
+    }*/
     //解析和处理从服务器返回的基准值指标
     public static boolean handleIndexStandardValResponse(String response){
         if (!TextUtils.isEmpty(response)) {

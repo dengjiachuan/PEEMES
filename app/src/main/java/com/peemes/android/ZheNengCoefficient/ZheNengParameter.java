@@ -5,23 +5,28 @@ package com.peemes.android.ZheNengCoefficient;
  */
 
 public class ZheNengParameter {
-    private int id;
+    private String id;
     private String name;
-    private double val;
+    private String val;
     private String uom;
+    private String meaning;
 
-    public ZheNengParameter(int id, String name, double val, String uom) {
+    public ZheNengParameter() {
+
+    }
+
+    public ZheNengParameter(String id, String name, String val, String uom) {
         this.id = id;
         this.name = name;
         this.val = val;
         this.uom = uom;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -33,11 +38,11 @@ public class ZheNengParameter {
         this.name = name;
     }
 
-    public double getVal() {
+    public String getVal() {
         return val;
     }
 
-    public void setVal(double val) {
+    public void setVal(String val) {
         this.val = val;
     }
 
@@ -47,5 +52,13 @@ public class ZheNengParameter {
 
     public void setUom(String uom) {
         this.uom = uom;
+    }
+
+    public String getMeaning() {
+        return meaning;
+    }
+
+    public void setMeaning(String meaning) {
+        this.meaning = meaning;
     }
 }
