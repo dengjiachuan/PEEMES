@@ -77,7 +77,7 @@ public class ParameterAdapter extends RecyclerView.Adapter<ParameterAdapter.View
                 RequestBody requestBody = FormBody.
                         create(MediaType.parse("application/json; charset = utf-8"),json);
                 Request request = new Request.Builder()
-                        .url("http://10.6.26.71:8080/PEEMES/NewZheNengCanShuServlet")
+                        .url("http://10.6.114.137:8080/PEEMES/NewZheNengCanShuServlet")
                         .post(requestBody)
                         .build();
                 Call call = client.newCall(request);

@@ -35,14 +35,14 @@ public class JilengIndexActivity extends AppCompatActivity {
             actionBar.hide();
         }
         //从上一个页面中拿出数据
-        Intent intent = getIntent();
-        String temp = intent.getStringExtra("title");
+        //Intent intent = getIntent();
+        //String temp = intent.getStringExtra("title");
         //为ListView制定适配器
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(JilengIndexActivity.this,
                 android.R.layout.simple_list_item_1,data);
         ListView listView = (ListView)findViewById(R.id.listView_title_listview);
 
-        showTitle(temp);
+        showTitle("急冷过程一次指标");
         listView.setAdapter(adapter);
         //ListView的点击效应
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -50,6 +50,22 @@ public class JilengIndexActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(JilengIndexActivity.this,data[position],Toast.LENGTH_SHORT).show();
                 Log.d("第二页","项数"+position);
+                switch (position){
+                    case 0:
+                        Intent intent1 = new Intent(JilengIndexActivity.this,
+                                ShowJilengEnergyActivity.class);
+                        startActivity(intent1);
+                        finish();
+                        break;
+                    case 1:
+                        Intent intent2 = new Intent(JilengIndexActivity.this,
+                                ShowJilengMatterActivity.class);
+                        startActivity(intent2);
+                        finish();
+                        break;
+                    default:
+                        break;
+                }
             }
         });
         //为返回按钮注册点击事件

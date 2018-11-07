@@ -27,5 +27,29 @@
         android:id="@+id/main_button_indexStandard"
         android:text="指标基准值"
         android:textSize="20sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_button_technology_panorama"
+        android:text="工艺全貌"
+        android:textSize="20sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_button_monitor_technological_process"
+        android:text="流程监控"
+        android:textSize="20sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_button_production_plan"
+        android:textSize="20sp"
+        android:text="生产计划"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_button_system_management"
+        android:text="系统管理"
+        android:textSize="20sp"/>
 
 </LinearLayout>

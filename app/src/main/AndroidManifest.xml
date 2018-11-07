@@ -27,6 +27,16 @@
         <activity android:name=".monitorParameter.YasuoIndexActivity"/>
         <activity android:name=".energyAssess.EnergyAssessActivity"/>
         <activity android:name=".ZheNengCoefficient.ZheNengCoefficientActivity"/>
+        <activity android:name=".monitorParameter.ShowYixiEnergyParameterActivity"/>
+        <activity android:name=".monitorParameter.ShowYixiMatterParameterActivity"/>
+        <activity android:name=".monitorParameter.ShowLiejieEnergyActivity"/>
+        <activity android:name=".monitorParameter.ShowLiejieMatterActivity"/>
+        <activity android:name=".monitorParameter.ShowJilengEnergyActivity"/>
+        <activity android:name=".monitorParameter.ShowJilengMatterActivity"/>
+        <activity android:name=".monitorParameter.ShowYasuoEnergyActivity"/>
+        <activity android:name=".monitorParameter.ShowYasuoMatterActivity"/>
+        <activity android:name=".monitorParameter.ShowFenliEnergyActivity"/>
+        <activity android:name=".monitorParameter.ShowFenliMatterActivity"/>
     </application>
 
 </manifest>

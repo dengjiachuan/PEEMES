@@ -16,7 +16,10 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.peemes.android.MainActivity;
 import com.peemes.android.R;
+import com.peemes.android.util.GetIP;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,13 +69,14 @@ public class ZheNengCoefficientActivity extends AppCompatActivity {
         });
     }
     private void initZheNengCoefficient(){
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.26.71:8080/PEEMES/ZheNengCanShuServlet")
+                            .url("http://10.6.114.137:8080/PEEMES/ZheNengCanShuServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();

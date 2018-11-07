@@ -60,7 +60,7 @@ public class ParaweterMonitorActivity extends AppCompatActivity {
                     case 2:
                         Toast.makeText(ParaweterMonitorActivity.this,data[position],Toast.LENGTH_SHORT).show();
                         Log.d("第几行：","2");
-                        Intent intent2 = new Intent(ParaweterMonitorActivity.this,LiejieIndexActivity.class);
+                        Intent intent2 = new Intent(ParaweterMonitorActivity.this,JilengIndexActivity.class);
                         intent2.putExtra("title",data[position]);
                         intent2.putExtra("number",position);
                         startActivity(intent2);
@@ -68,7 +68,7 @@ public class ParaweterMonitorActivity extends AppCompatActivity {
                     case 3:
                         Toast.makeText(ParaweterMonitorActivity.this,data[position],Toast.LENGTH_SHORT).show();
                         Log.d("第几行：","3");
-                        Intent intent3 = new Intent(ParaweterMonitorActivity.this,LiejieIndexActivity.class);
+                        Intent intent3 = new Intent(ParaweterMonitorActivity.this,YasuoIndexActivity.class);
                         intent3.putExtra("title",data[position]);
                         intent3.putExtra("number",position);
                         startActivity(intent3);
@@ -76,7 +76,7 @@ public class ParaweterMonitorActivity extends AppCompatActivity {
                     case 4:
                         Toast.makeText(ParaweterMonitorActivity.this,data[position],Toast.LENGTH_SHORT).show();
                         Log.d("第几行：","4");
-                        Intent intent4 = new Intent(ParaweterMonitorActivity.this,LiejieIndexActivity.class);
+                        Intent intent4 = new Intent(ParaweterMonitorActivity.this,FenliIndexActivity.class);
                         intent4.putExtra("title",data[position]);
                         intent4.putExtra("number",position);
                         startActivity(intent4);

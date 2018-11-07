@@ -43,7 +43,7 @@ public class SystemIndexActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1,data0);
         ListView listView = (ListView)findViewById(R.id.listView_title_listview);
 
-        showTitle(temp);
+        showTitle("系统级一次指标");
         listView.setAdapter(adapter);
         //ListView的点击效应
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -51,6 +51,22 @@ public class SystemIndexActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(SystemIndexActivity.this,data0[position],Toast.LENGTH_SHORT).show();
                 Log.d("第二页","项数"+position);
+                switch (position){
+                    case 0:
+                        Intent intent1 = new Intent(SystemIndexActivity.this,
+                                ShowYixiEnergyParameterActivity.class);
+                        startActivity(intent1);
+                        finish();
+                        break;
+                    case 1:
+                        Intent intent2 = new Intent(SystemIndexActivity.this,
+                                ShowYixiMatterParameterActivity.class);
+                        startActivity(intent2);
+                        finish();
+                        break;
+                    default:
+                        break;
+                }
             }
         });
         //为返回按钮注册点击事件
