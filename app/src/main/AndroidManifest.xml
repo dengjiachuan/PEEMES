@@ -37,6 +37,7 @@
         <activity android:name=".monitorParameter.ShowYasuoMatterActivity"/>
         <activity android:name=".monitorParameter.ShowFenliEnergyActivity"/>
         <activity android:name=".monitorParameter.ShowFenliMatterActivity"/>
+        <activity android:name=".indexStandard.IndexStandardActivity"/>
     </application>
 
 </manifest>

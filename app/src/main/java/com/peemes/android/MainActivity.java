@@ -9,12 +9,14 @@ import android.widget.Button;
 
 import com.peemes.android.ZheNengCoefficient.ZheNengCoefficientActivity;
 import com.peemes.android.energyAssess.EnergyAssessActivity;
+import com.peemes.android.indexStandard.IndexStandardActivity;
 import com.peemes.android.monitorParameter.ParaweterMonitorActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button button;
     private Button button_EnergyAssess;
     private Button button_ZheNengCofficient;
+    private Button buttonIndexStandard;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         button = (Button)findViewById(R.id.main_button_parameter_monitor);
         button_EnergyAssess = (Button)findViewById(R.id.main_button_assess_energy);
         button_ZheNengCofficient = (Button)findViewById(R.id.main_button_zheNeng_parameter);
+        buttonIndexStandard = (Button)findViewById(R.id.main_button_indexStandard);
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -43,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ZheNengCoefficientActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        buttonIndexStandard.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, IndexStandardActivity.class);
                 startActivity(intent);
                 finish();
             }
