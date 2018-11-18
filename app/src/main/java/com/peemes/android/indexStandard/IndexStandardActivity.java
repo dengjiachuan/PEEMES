@@ -76,7 +76,7 @@ public class IndexStandardActivity extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.111.82:8080/PEEMES/IndexStandardValServlet")
+                            .url("http://10.6.102.10:8080/PEEMES/IndexStandardValServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     //从服务端获取JSON格式的数据
@@ -99,7 +99,7 @@ public class IndexStandardActivity extends AppCompatActivity {
                 "急冷油塔盘油泵P1211效率","急冷水塔水油分离泵P1220效率","C-1260塔底泵效率","一段压缩比","二段压缩比",
                 "一二段间压力降","一二段间压力降百分比","三段压缩比","二三段压力降","二三段压力降百分比","五段压缩比",
                 "总压缩比","裂解区锅炉给水能量回收率","裂解炉1能效"};
-        String []stringUOM = {"kgeo/h"," ","kgeo/t","kgeo/t","kgeo/t","kgeo/t","kgeo/t","kgeo/t"
+        String []stringUOM = {"kgeo/h","%","kgeo/t","kgeo/t","kgeo/t","kgeo/t","kgeo/t","kgeo/t"
                 ,"kgeo/t","kgeo/t","kgeo/t","kgeo/t","kgeo/t","kgeo/t","kgeo/t","%","%","Mpa","%","%","Mpa"
                 ,"%","%","%","%","kgeo/t"};
         Gson gson = new Gson();

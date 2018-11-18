@@ -6,6 +6,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/main_button_total"
+        android:text="乙烯车间运行情况"
+        android:textSize="20sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/main_button_parameter_monitor"
         android:text="参数监测"
         android:textSize="20sp"/>

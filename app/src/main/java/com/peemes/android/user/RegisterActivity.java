@@ -1,19 +1,33 @@
-package com.peemes.android.service;
+package com.peemes.android.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.peemes.android.R;
-import com.peemes.android.db.User;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 
 /**
- * Created by cshao on 2018/10/15.
+ * Created by cshao on 2018/11/17.
  */
 
 public class RegisterActivity extends AppCompatActivity {
@@ -34,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        //对所有的控件进行注册，以获得相应的实例
         register_account_text = (EditText)findViewById(R.id.register_account_text);
         register_password_text = (EditText)findViewById(R.id.register_password_text);
         affirm_register_password_text = (EditText)findViewById(R.id.affirm_register_password_text);
@@ -46,7 +61,9 @@ public class RegisterActivity extends AppCompatActivity {
         register_affirm_button = (Button)findViewById(R.id.register_affirm_button);
         register_cancel_button = (Button)findViewById(R.id.register_cancel_button);
         back_login = (Button)findViewById(R.id.back_login);
-        register_affirm_button.setOnClickListener(new View.OnClickListener(){
+        //获取当前系统的，把这个事件放在服务器上写
+        //注册登录按钮的点击事件，点击的情况下进行登录
+        register_affirm_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (register_password_text.getText().toString().equals(affirm_register_password_text.getText().toString())
@@ -54,20 +71,47 @@ public class RegisterActivity extends AppCompatActivity {
                         && register_partment_id.getText().toString().equals(affire_register_partment_id.getText().toString())
                         && register_prvi_grade.getText().toString().equals(affire_register_prvi_grade.getText().toString())) {
                     User user = new User();
-                    user.setUserID(register_user_id.getText().toString());
-                    user.setUserName(register_account_text.getText().toString());
-                    user.setPassWord(register_password_text.getText().toString());
-                    user.setPartmentID(register_partment_id.getText().toString());
-                    user.setPrivGrade(register_prvi_grade.getText().toString());
-                    //SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//API版本问题，能运行出正常结果。
-                    //String date = sDateFormat.format(new java.util.Date());
-                    user.setLastLogin(null);
-                    boolean result = user.save();
-                    if (result) {
-                        Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(RegisterActivity.this,"注册失败，可能是没有添加上次登录时间失败",Toast.LENGTH_SHORT).show();
-                    }
+                    OkHttpClient client = new OkHttpClient();
+                    final String userID = register_user_id.getText().toString();
+                    final String userName = register_account_text.getText().toString();
+                    final String userWord = register_password_text.getText().toString();
+                    final String partmentID = register_partment_id.getText().toString();
+                    final String privGrade = register_prvi_grade.getText().toString();
+                    user.setUserID(userID);
+                    user.setUserName(userName);
+                    user.setPassWord(userWord);
+                    user.setPartmentID(partmentID);
+                    user.setPrivGrade(privGrade);
+                    //使用Gson将对象装换为json字符串
+                    Gson gson = new Gson();
+                    String json = gson.toJson(user);
+                    RequestBody requestBody = FormBody.create(
+                            MediaType.parse("application/json; charset = utf-8"),json);
+                    Request request = new Request.Builder()
+                            .url("http://10.6.21.127:8080/PEEMES/RegistreServlet")
+                            .post(requestBody)
+                            .build();
+                    Call call = client.newCall(request);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Log.d("registerActivity",call.toString());
+                            Log.d("registerActivity","往服务器传送数据失败");
+                        }
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            Looper.prepare();
+                            final String res = response.body().string();
+                            Log.d("registerActivity",res);
+                            if (res.equals("{\"success\":\"success\"}")) {
+                                Toast.makeText(RegisterActivity.this,"注册成功,请返回登录界面进行登录",Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(RegisterActivity.this,"注册失败。请重新注册",Toast.LENGTH_SHORT).show();
+                            }
+                            Looper.loop();
+                        }
+                    });
+
                 }
                 if (!(register_password_text.getText().toString()
                         .equals(affirm_register_password_text.getText().toString()))) {
@@ -92,7 +136,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-        register_cancel_button.setOnClickListener(new View.OnClickListener(){
+        register_cancel_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 register_account_text.setText(null);
@@ -114,6 +158,5 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }

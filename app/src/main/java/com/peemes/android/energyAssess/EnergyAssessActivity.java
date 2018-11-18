@@ -40,6 +40,9 @@ public class EnergyAssessActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(EnergyAssessActivity.this,
                 android.R.layout.simple_list_item_1,data);
         textView_title_text.setText("能效评估");
+        //这两个方法是实验数据是否传送上来。
+        //GetEAParameter.initAssessActivityList();
+        //GetEAParameter.print();
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -64,10 +67,6 @@ public class EnergyAssessActivity extends AppCompatActivity {
                     case 0:
                         Toast.makeText(EnergyAssessActivity.this,data[position],Toast.LENGTH_SHORT).show();
                         Log.d("第几行：","0");
-                       // Intent intent0 = new Intent(EnergyAssessActivity.this,SystemIndexActivity.class);
-                       // intent0.putExtra("title",data[position]);
-                        //intent0.putExtra("number",position);
-                       // startActivity(intent0);
                         break;
                 }
             }
