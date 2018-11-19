@@ -41,6 +41,14 @@
         <activity android:name=".energyAssess.DynamicChartMinuteActivity"/>
         <activity android:name=".energyAssess.demo"/>
         <activity android:name=".user.RegisterActivity"/>
+        <activity android:name=".energyAssess.EAFiveSystemActivity"/>
+        <activity android:name=".energyAssess.EASystemDetailActivity"/>
+        <activity android:name=".energyAssess.EAFiveFenliActivity"/>
+        <activity android:name=".energyAssess.EAFiveJilengActivity"/>
+        <activity android:name=".energyAssess.EAFiveLiejieActivity"/>
+        <activity android:name=".energyAssess.EAFiveShebeiActivity"/>
+        <activity android:name=".energyAssess.EAFiveTotalSystemActivity"/>
+        <activity android:name=".energyAssess.EAFiveYasuoActivity"/>
     </application>
 
 </manifest>

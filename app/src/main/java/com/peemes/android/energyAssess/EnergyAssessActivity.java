@@ -51,9 +51,15 @@ public class EnergyAssessActivity extends AppCompatActivity {
                     case 1:
                         Toast.makeText(EnergyAssessActivity.this,data[position],Toast.LENGTH_SHORT).show();
                         Log.d("第几行：","1");
+                        Intent intent1 = new Intent(EnergyAssessActivity.this,EAFiveTotalSystemActivity.class);
+                        startActivity(intent1);
+                        finish();
                         break;
                     case 2:
                         Toast.makeText(EnergyAssessActivity.this,data[position],Toast.LENGTH_SHORT).show();
+                        Intent intent2 = new Intent(EnergyAssessActivity.this,EAFiveShebeiActivity.class);
+                        startActivity(intent2);
+                        finish();
                         Log.d("第几行：","2");
                         break;
                     case 3:
@@ -67,6 +73,9 @@ public class EnergyAssessActivity extends AppCompatActivity {
                     case 0:
                         Toast.makeText(EnergyAssessActivity.this,data[position],Toast.LENGTH_SHORT).show();
                         Log.d("第几行：","0");
+                        Intent intent = new Intent(EnergyAssessActivity.this,EAFiveSystemActivity.class);
+                        startActivity(intent);
+                        finish();
                         break;
                 }
             }

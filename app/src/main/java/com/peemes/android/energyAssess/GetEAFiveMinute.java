@@ -51,7 +51,7 @@ public class GetEAFiveMinute {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.102.10:8080/PEEMES/EAFiveMinuteServlet")
+                            .url("http://10.6.12.124:8080/PEEMES/EAFiveLastServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     String reponseData = response.body().string();

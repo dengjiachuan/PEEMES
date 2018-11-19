@@ -3,7 +3,7 @@ package com.peemes.android.energyAssess;
 /**
  * Created by cshao on 2018/11/12.
  */
-//主要是吧能效评估的所有参数的相关信息传入安卓端，然后可以针对这些数据进行相应的编程。
+//主要是把能效评估的所有参数的相关信息传入安卓端，然后可以针对这些数据进行相应的编程。
     //该类是为一个实体类，作为安卓端传输的数据的实体类；
 public class EnergyAssessParameter {
     private String id;
