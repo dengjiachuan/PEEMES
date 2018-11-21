@@ -59,7 +59,7 @@ public class EASystemDetailActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(EASystemDetailActivity.this, EAFiveSystemActivity.class);
+                Intent intent1 = new Intent(EASystemDetailActivity.this,EnergyAssessActivity.class);
                 startActivity(intent1);
                 finish();
             }

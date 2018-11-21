@@ -13,25 +13,50 @@ import com.peemes.android.demo.LineChartDemo;
 import com.peemes.android.energyAssess.DynamicChartMinuteActivity;
 import com.peemes.android.energyAssess.EnergyAssessActivity;
 import com.peemes.android.energyAssess.demo;
+import com.peemes.android.gongyiquanmao.GyqmActivity;
 import com.peemes.android.indexStandard.IndexStandardActivity;
+import com.peemes.android.liuchengjiankong.LcjkActivity;
 import com.peemes.android.monitorParameter.ParaweterMonitorActivity;
+import com.peemes.android.user.ManagerUserActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button;
-    private Button button_EnergyAssess;
-    private Button button_ZheNengCofficient;
-    private Button buttonIndexStandard;
-    private Button buttonTotal;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = (Button)findViewById(R.id.main_button_parameter_monitor);
-        button_EnergyAssess = (Button)findViewById(R.id.main_button_assess_energy);
-        button_ZheNengCofficient = (Button)findViewById(R.id.main_button_zheNeng_parameter);
-        buttonIndexStandard = (Button)findViewById(R.id.main_button_indexStandard);
-        buttonTotal = (Button)findViewById(R.id.main_button_total);
+        Button button = (Button)findViewById(R.id.main_button_parameter_monitor);
+        Button button_EnergyAssess = (Button)findViewById(R.id.main_button_assess_energy);
+        Button button_ZheNengCofficient = (Button)findViewById(R.id.main_button_zheNeng_parameter);
+        Button buttonIndexStandard = (Button)findViewById(R.id.main_button_indexStandard);
+        Button buttonTotal = (Button)findViewById(R.id.main_button_total);
+        Button buttonGyqm = (Button)findViewById(R.id.main_button_technology_panorama);
+        Button buttonLcjk = (Button)findViewById(R.id.main_button_monitor_technological_process);
+        Button buttonSystem = (Button)findViewById(R.id.main_button_system_management);
+        buttonSystem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ManagerUserActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        buttonLcjk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LcjkActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        buttonGyqm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GyqmActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         buttonTotal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

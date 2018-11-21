@@ -22,9 +22,11 @@ import java.util.List;
  */
 
 public class EAFiveSystemActivity extends AppCompatActivity {
-    private List<EAFive> eaFiveList = new ArrayList<>();
+    public static  List<EAFive> eaFiveList = new ArrayList<>();
     private Button buttonBack;
     private TextView textViewTitle;
+    private EAFiveSystemAdapter adapter;
+    private ListView listView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,11 +44,9 @@ public class EAFiveSystemActivity extends AppCompatActivity {
         textViewTitle.setText("系统级工艺流程分析");
         //初始化系统级相关的能效评估的指标
         initEAFiveList();
-        EAFiveSystemAdapter adapter = new EAFiveSystemAdapter(EAFiveSystemActivity.this,R.layout.ea_item,eaFiveList);
-        ListView listView = (ListView)findViewById(R.id.eaList_listView);
+        adapter = new EAFiveSystemAdapter(EAFiveSystemActivity.this,R.layout.ea_item,eaFiveList);
+        listView = (ListView)findViewById(R.id.eaList_listView);
         listView.setAdapter(adapter);
-        //对eaFiveList集合进行清除，用来装下一次的数据
-       // eaFiveList.clear();
         //对返回按钮进行注册点击事件
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +56,12 @@ public class EAFiveSystemActivity extends AppCompatActivity {
                 finish();
             }
         });
+        //对集合里面的数据进行清空，直接在这里清理会无数据上传
+//        if (eaFiveList.size()>0) {
+//            eaFiveList.clear();
+//            adapter.notifyDataSetChanged();
+//            listView.setSelection(0);
+//        }
     }
     //对系统级指标进行初始化
     private void initEAFiveList(){
@@ -76,7 +82,7 @@ public class EAFiveSystemActivity extends AppCompatActivity {
             int num2 = Integer.parseInt(GetEAFiveMinute.eaFiveMinutesListParameter.get(i).getId());
             if (num2>11 && num2 <23) {
                 val = GetEAFiveMinute.eaFiveMinutesListParameter.get(i).getVal();
-               // time = GetEAFiveMinute.eaFiveMinutesListParameter.get(i).getClock();
+                // time = GetEAFiveMinute.eaFiveMinutesListParameter.get(i).getClock();
                 for(int j = 0; j<GetEAParameter.assessActivityList.size();j++){
                     //得到GetEAParameter的ID号
                     int num1 = Integer.parseInt(GetEAParameter.assessActivityList.get(j).getId());

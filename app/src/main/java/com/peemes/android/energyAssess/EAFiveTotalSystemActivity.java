@@ -47,7 +47,7 @@ public class EAFiveTotalSystemActivity extends AppCompatActivity{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        Intent intent = new Intent(EAFiveTotalSystemActivity.this,EAFiveLiejieAdaprter.class);
+                        Intent intent = new Intent(EAFiveTotalSystemActivity.this,EAFiveLiejieActivity.class);
                         startActivity(intent);
                         finish();
                         break;
