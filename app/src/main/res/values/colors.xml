@@ -7,4 +7,12 @@
     <color name="txt_black_light">#333333</color>
     <color name="bg_white">#FFFFFF</color>
     <color name="text_yellow">#FFC800</color>
+    <color name="qingse">#00e09e</color>
+    <color name="qingcui">#00e079</color>
+    <color name="bilv">#2add9c</color>
+    <color name="shiqing">#48c0a3</color>
+    <color name="weilan">#70f3ff</color>
+    <color name="baolan">#4b5cc4</color>
+    <color name="shuise">#88ada6</color>
+    <color name="jinse">#eacd76</color>
 </resources>

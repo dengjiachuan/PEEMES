@@ -2,6 +2,7 @@ package com.peemes.android.ZheNengCoefficient;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -102,6 +103,5 @@ public class ZheNengCoefficientActivity extends AppCompatActivity {
             ZheNengParameter myznp = new ZheNengParameter(znp.getId(),znp.getMeaning(),znp.getVal(),znp.getUom());
             znpList.add(myznp);
         }
-
     }
 }

@@ -41,9 +41,9 @@ public class DynamicChartMinuteActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chart);
-        LineChart mChart = (LineChart)findViewById(R.id.dynamic_chart2);
-        Button buttonBack = (Button)findViewById(R.id.chart_button_title_back);
-        textViewTitle = (TextView)findViewById(R.id.chart_title_text);
+        LineChart mChart = (LineChart)findViewById(R.id.dynamic_chart);
+        Button buttonBack = (Button)findViewById(R.id.chart_back);
+        textViewTitle = (TextView)findViewById(R.id.chart_title);
         //先把原来的标题隐藏掉
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

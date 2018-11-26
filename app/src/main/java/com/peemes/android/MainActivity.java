@@ -8,11 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.peemes.android.ZheNengCoefficient.ZheNengCoefficientActivity;
-import com.peemes.android.demo.DynamicLineChartActivity;
-import com.peemes.android.demo.LineChartDemo;
-import com.peemes.android.energyAssess.DynamicChartMinuteActivity;
 import com.peemes.android.energyAssess.EnergyAssessActivity;
-import com.peemes.android.energyAssess.demo;
+import com.peemes.android.energyAssess.EADataChartShow;
 import com.peemes.android.gongyiquanmao.GyqmActivity;
 import com.peemes.android.indexStandard.IndexStandardActivity;
 import com.peemes.android.liuchengjiankong.LcjkActivity;
@@ -60,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         buttonTotal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, demo.class);
+                Intent intent = new Intent(MainActivity.this, EADataChartShow.class);
                 startActivity(intent);
                 finish();
             }

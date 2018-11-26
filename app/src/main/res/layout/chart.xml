@@ -18,34 +18,78 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/chart_title_text"
+                    android:id="@+id/chart_title"
                     android:layout_centerInParent="true"
                     android:textColor="#fff"
                     android:textSize="20sp"
-                    android:hint="title text"/>
+                    android:hint="title"/>
                 <Button
                     android:layout_width="60dp"
                     android:layout_height="50dp"
-                    android:id="@+id/chart_button_title_back"
+                    android:id="@+id/chart_back"
                     android:text="返回"
                     android:layout_marginLeft="10dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"/>
             </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="系统级能效评估指标实时值"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:textSize="18dp"/>
         </LinearLayout>
-        <com.github.mikephil.charting.charts.LineChart
+        <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="380dp"
-            android:id="@+id/dynamic_chart1"/>
-        <Button
+            android:id="@+id/swipe_refresh">
+            <com.github.mikephil.charting.charts.LineChart
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:id="@+id/dynamic_chart" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="addEntry"
-            android:text="添加数据"/>
-        <com.github.mikephil.charting.charts.LineChart
+            android:layout_height="50dp"
+            android:text="请选择查看周期："
+            android:gravity="center_vertical"/>
+        <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="380dp"
-            android:id="@+id/dynamic_chart2"/>
+            android:layout_height="50dp"
+            android:id="@+id/chart_radiogroup"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chart_rg_tour"
+                android:text="小时"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chart_rg_day"
+                android:text="天"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chart_rg_week"
+                android:text="周"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chart_rg_month"
+                android:text="月"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chart_rg_quarter"
+                android:text="季度"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chart_rg_year"
+                android:text="年"/>
+        </RadioGroup>
     </LinearLayout>
-
 </ScrollView>

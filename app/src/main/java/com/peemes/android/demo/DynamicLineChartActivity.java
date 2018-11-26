@@ -26,8 +26,8 @@ public class DynamicLineChartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chart);
-        LineChart mChart1 = (LineChart) findViewById(R.id.dynamic_chart1);
-        LineChart mChart2 = (LineChart) findViewById(R.id.dynamic_chart2);
+        LineChart mChart1 = (LineChart) findViewById(R.id.dynamic_chart);
+        LineChart mChart2 = (LineChart) findViewById(R.id.dynamic_chart);
         //折线名字
         names.add("温度");
         names.add("压强");

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.peemes.android">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:name= "org.litepal.LitePalApplication"
+        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,44 +18,51 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"  android:label="乙烯生产能效监测与评估"/>
-        <activity android:name=".monitorParameter.ParaweterMonitorActivity"/>
-        <activity android:name=".monitorParameter.SystemIndexActivity"/>
-        <activity android:name=".monitorParameter.LiejieIndexActivity"/>
-        <activity android:name=".monitorParameter.FenliIndexActivity"/>
-        <activity android:name=".monitorParameter.JilengIndexActivity"/>
-        <activity android:name=".monitorParameter.YasuoIndexActivity"/>
-        <activity android:name=".energyAssess.EnergyAssessActivity"/>
-        <activity android:name=".ZheNengCoefficient.ZheNengCoefficientActivity"/>
-        <activity android:name=".monitorParameter.ShowYixiEnergyParameterActivity"/>
-        <activity android:name=".monitorParameter.ShowYixiMatterParameterActivity"/>
-        <activity android:name=".monitorParameter.ShowLiejieEnergyActivity"/>
-        <activity android:name=".monitorParameter.ShowLiejieMatterActivity"/>
-        <activity android:name=".monitorParameter.ShowJilengEnergyActivity"/>
-        <activity android:name=".monitorParameter.ShowJilengMatterActivity"/>
-        <activity android:name=".monitorParameter.ShowYasuoEnergyActivity"/>
-        <activity android:name=".monitorParameter.ShowYasuoMatterActivity"/>
-        <activity android:name=".monitorParameter.ShowFenliEnergyActivity"/>
-        <activity android:name=".monitorParameter.ShowFenliMatterActivity"/>
-        <activity android:name=".indexStandard.IndexStandardActivity"/>
-        <activity android:name=".demo.LineChartDemo"/>
-        <activity android:name=".demo.DynamicLineChartActivity"/>
-        <activity android:name=".energyAssess.DynamicChartMinuteActivity"/>
-        <activity android:name=".energyAssess.demo"/>
-        <activity android:name=".user.RegisterActivity"/>
-        <activity android:name=".energyAssess.EAFiveSystemActivity"/>
-        <activity android:name=".energyAssess.EASystemDetailActivity"/>
-        <activity android:name=".energyAssess.EAFiveFenliActivity"/>
-        <activity android:name=".energyAssess.EAFiveJilengActivity"/>
-        <activity android:name=".energyAssess.EAFiveLiejieActivity"/>
-        <activity android:name=".energyAssess.EAFiveShebeiActivity"/>
-        <activity android:name=".energyAssess.EAFiveTotalSystemActivity"/>
-        <activity android:name=".energyAssess.EAFiveYasuoActivity"/>
-        <activity android:name=".gongyiquanmao.GyqmActivity"/>
-        <activity android:name=".liuchengjiankong.LcjkActivity"/>
-        <activity android:name=".liuchengjiankong.LcjkDetailActivity"/>
-        <activity android:name=".user.ManagerUserActivity"/>
-        <activity android:name=".user.ModifyActivity"/>
+        <activity
+            android:name=".MainActivity"
+            android:label="乙烯生产能效监测与评估" />
+        <activity android:name=".monitorParameter.ParaweterMonitorActivity" />
+        <activity android:name=".monitorParameter.SystemIndexActivity" />
+        <activity android:name=".monitorParameter.LiejieIndexActivity" />
+        <activity android:name=".monitorParameter.FenliIndexActivity" />
+        <activity android:name=".monitorParameter.JilengIndexActivity" />
+        <activity android:name=".monitorParameter.YasuoIndexActivity" />
+        <activity android:name=".energyAssess.EnergyAssessActivity" />
+        <activity android:name=".ZheNengCoefficient.ZheNengCoefficientActivity" />
+        <activity android:name=".monitorParameter.ShowYixiEnergyParameterActivity" />
+        <activity android:name=".monitorParameter.ShowYixiMatterParameterActivity" />
+        <activity android:name=".monitorParameter.ShowLiejieEnergyActivity" />
+        <activity android:name=".monitorParameter.ShowLiejieMatterActivity" />
+        <activity android:name=".monitorParameter.ShowJilengEnergyActivity" />
+        <activity android:name=".monitorParameter.ShowJilengMatterActivity" />
+        <activity android:name=".monitorParameter.ShowYasuoEnergyActivity" />
+        <activity android:name=".monitorParameter.ShowYasuoMatterActivity" />
+        <activity android:name=".monitorParameter.ShowFenliEnergyActivity" />
+        <activity android:name=".monitorParameter.ShowFenliMatterActivity" />
+        <activity android:name=".indexStandard.IndexStandardActivity" />
+        <activity android:name=".demo.LineChartDemo" />
+        <activity android:name=".demo.DynamicLineChartActivity" />
+        <activity android:name=".energyAssess.DynamicChartMinuteActivity" />
+        <activity android:name=".energyAssess.EADataChartShow" />
+        <activity android:name=".user.RegisterActivity" />
+        <activity android:name=".energyAssess.EAFiveSystemActivity" />
+        <activity android:name=".energyAssess.EASystemDetailActivity" />
+        <activity android:name=".energyAssess.EAFiveFenliActivity" />
+        <activity android:name=".energyAssess.EAFiveJilengActivity" />
+        <activity android:name=".energyAssess.EAFiveLiejieActivity" />
+        <activity android:name=".energyAssess.EAFiveShebeiActivity" />
+        <activity android:name=".energyAssess.EAFiveTotalSystemActivity" />
+        <activity android:name=".energyAssess.EAFiveYasuoActivity" />
+        <activity android:name=".gongyiquanmao.GyqmActivity" />
+        <activity android:name=".liuchengjiankong.LcjkActivity" />
+        <activity android:name=".liuchengjiankong.LcjkDetailActivity" />
+        <activity android:name=".user.ManagerUserActivity" />
+        <activity android:name=".user.ModifyActivity" />
+
+        <service
+            android:name=".service.AutoUpdateService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
