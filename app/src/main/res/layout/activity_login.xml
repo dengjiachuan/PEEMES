@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:background="@mipmap/four">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -23,7 +23,6 @@
             android:hint="请输入您的用户号"
             android:textSize="20sp" />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -88,5 +87,11 @@
         android:id="@+id/register_button"
         android:text="注册"
         android:textSize="20sp"/>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:text="忘记密码？\n请联系管理员“b_sammiyu@sina.com”进行密码修改/>"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"/>
 </LinearLayout>

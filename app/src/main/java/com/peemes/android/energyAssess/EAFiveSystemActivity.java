@@ -56,12 +56,6 @@ public class EAFiveSystemActivity extends AppCompatActivity {
                 finish();
             }
         });
-        //对集合里面的数据进行清空，直接在这里清理会无数据上传
-//        if (eaFiveList.size()>0) {
-//            eaFiveList.clear();
-//            adapter.notifyDataSetChanged();
-//            listView.setSelection(0);
-//        }
     }
     //对系统级指标进行初始化
     private void initEAFiveList(){
@@ -77,6 +71,10 @@ public class EAFiveSystemActivity extends AppCompatActivity {
         String val = null;
         String uom = null;
        // String time = null;
+        //清空集合里面以前的数据
+        if (eaFiveList.size()>0) {
+            eaFiveList.clear();
+        }
         for(int i = 0; i< GetEAFiveMinute.eaFiveMinutesListParameter.size();i++){
             //得到GetEAFiveMinute的ID号
             int num2 = Integer.parseInt(GetEAFiveMinute.eaFiveMinutesListParameter.get(i).getId());

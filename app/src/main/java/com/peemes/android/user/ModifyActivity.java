@@ -79,7 +79,7 @@ public class ModifyActivity extends AppCompatActivity {
                     RequestBody requestBody = FormBody.create(
                             MediaType.parse("application/json; charset = utf-8"),json);
                     Request request = new Request.Builder()
-                            .url("http://localhost:8080/PEEMES/ModifyUserServlet")
+                            .url("http://10.6.76.128:8080/PEEMES/ModifyUserServlet")
                             .post(requestBody)
                             .build();
                     Call call = client.newCall(request);

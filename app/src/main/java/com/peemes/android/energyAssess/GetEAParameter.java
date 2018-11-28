@@ -24,6 +24,9 @@ public class GetEAParameter {
         Gson gson = new Gson();
         List<EnergyAssessParameter> list = gson.fromJson(jsonData,
                 new TypeToken<List<EnergyAssessParameter>>(){}.getType());
+        if (assessActivityList.size()>0) {
+            assessActivityList.clear();
+        }
         for(EnergyAssessParameter eap : list){
             EnergyAssessParameter myZap = new EnergyAssessParameter(eap.getId(),eap.getName(),
                     eap.getCal_meth(),eap.getMeaning(),eap.getUom());
@@ -38,7 +41,7 @@ public class GetEAParameter {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.12.124:8080/PEEMES/EnergyAssessServlet")
+                            .url("http://10.6.76.128:8080/PEEMES/EnergyAssessServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();

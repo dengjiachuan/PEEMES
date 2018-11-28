@@ -1,5 +1,6 @@
 package com.peemes.android.ZheNengCoefficient;
 
+import android.content.Intent;
 import android.os.Looper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -77,7 +78,7 @@ public class ParameterAdapter extends RecyclerView.Adapter<ParameterAdapter.View
                 RequestBody requestBody = FormBody.
                         create(MediaType.parse("application/json; charset = utf-8"),json);
                 Request request = new Request.Builder()
-                        .url("http://10.6.102.10:8080/PEEMES/NewZheNengCanShuServlet")
+                        .url("http://10.6.76.128:8080/PEEMES/NewZheNengCanShuServlet")
                         .post(requestBody)
                         .build();
                 Call call = client.newCall(request);

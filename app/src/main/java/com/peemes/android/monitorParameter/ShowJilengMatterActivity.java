@@ -26,7 +26,7 @@ public class ShowJilengMatterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.title);
+        setContentView(R.layout.title_detal);
         //注册标题栏的相关控件
         Button backButton = (Button)findViewById(R.id.button_title_back);
         TextView textViewTitle = (TextView)findViewById(R.id.textView_title_text);
@@ -57,8 +57,8 @@ public class ShowJilengMatterActivity extends AppCompatActivity {
         String time1 = String.format("%tF",date);
         String time2 = String.format("%tT",date);
         String time = time1+" "+time2;
-        ParameterMontor parameterMontor = new ParameterMontor("物质名称","位号","实时值","单位","时间");
-        parameterMontorList.add(parameterMontor);
+        //ParameterMontor parameterMontor = new ParameterMontor("物质名称","位号","实时值","单位","时间");
+        //parameterMontorList.add(parameterMontor);
         ParameterMontor parameterMontor1 = new ParameterMontor("急冷油塔汽油回流","FIC_12002","/","t/h",time);
         parameterMontorList.add(parameterMontor1);
         ParameterMontor parameterMontor2 = new ParameterMontor("急冷油塔汽油","FIC_12029","/","t/h",time);

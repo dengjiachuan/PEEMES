@@ -38,6 +38,9 @@ public class GetEAFiveMinute {
         List<EAFiveMinuteParameter> fiveMinuteList = gson.fromJson(responseData,
                 new TypeToken<List<EAFiveMinuteParameter>>(){}.getType());
         //遍历list结合，把解析的数据传入到eaFiveMinutesList
+        if (eaFiveMinutesListParameter.size()>0) {
+            eaFiveMinutesListParameter.clear();
+        }
         for(EAFiveMinuteParameter eaf: fiveMinuteList){
             EAFiveMinuteParameter myEaf = new EAFiveMinuteParameter(eaf.getId(),eaf.getClock(),eaf.getVal());
             eaFiveMinutesListParameter.add(myEaf);
@@ -51,7 +54,7 @@ public class GetEAFiveMinute {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.12.124:8080/PEEMES/EAFiveLastServlet")
+                            .url("http://10.6.76.128:8080/PEEMES/EAFiveLastServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     String reponseData = response.body().string();
@@ -71,6 +74,24 @@ public class GetEAFiveMinute {
     }
     //对得到的数据进行分组，符合和服务端的显示
     public static void initAllList(){
+        if (systemFiveMinuteList.size()>0) {
+            systemFiveMinuteList.clear();
+        }
+        if (LiejieFiveMinuteList.size()>0) {
+            LiejieFiveMinuteList.clear();
+        }
+        if (JilengFiveMinuteList.size()>0) {
+            JilengFiveMinuteList.clear();
+        }
+        if(YasuoFiveMinuteList.size()>0){
+            YasuoFiveMinuteList.clear();
+        }
+        if (FenliFiveMinuteList.size()>0) {
+            FenliFiveMinuteList.clear();
+        }
+        if (EquipmentFiveMinuteList.size()>0) {
+            EquipmentFiveMinuteList.clear();
+        }
         for(EAFiveMinuteParameter eaFiveMinuteParameter : eaFiveMinutesListParameter){
             if (Integer.parseInt(eaFiveMinuteParameter.getId()) > 11 && (Integer.parseInt(eaFiveMinuteParameter.getId())) < 23) {
                 systemFiveMinuteList.add(eaFiveMinuteParameter);

@@ -162,8 +162,7 @@ public class EADataChartShow extends AppCompatActivity {
             }
         });
     }
-
-    //1、数据对象的获取
+    //1、数据对象的获取————按小时查询
     public  void  initData(){
         new Thread(new Runnable() {
             @Override
@@ -185,7 +184,39 @@ public class EADataChartShow extends AppCompatActivity {
             }
         }).start();
     }
-    //2、对图表进行初始化---查询周期为每小时
+    //2、对数据进行解析-----查询周期为小时
+    public  void parseJSONWithGson(String responseData){
+        Gson gson = new Gson();
+        //对json格式的数据进行解析，然后存在list集合中
+        List<EAFiveMinuteParameter> fiveMinuteList = gson.fromJson(responseData,
+                new TypeToken<List<EAFiveMinuteParameter>>(){}.getType());
+        //遍历list结合，把解析的数据传入到eaFiveMinutesList
+        if (firstList.size() > 0) {
+            firstList.clear();
+        }
+        if (secondList.size() > 0) {
+            secondList.clear();
+        }
+        for(EAFiveMinuteParameter eaf: fiveMinuteList){
+            EAFiveMinuteParameter myEaf = new EAFiveMinuteParameter(eaf.getId(),eaf.getClock(),eaf.getVal());
+            //对不同的参数进行去值，放到相应的数组中
+            if (Integer.parseInt(myEaf.getId()) == 16) {
+                firstList.add(myEaf);
+                //xList.add(myEaf.getClock());
+            }
+            //获得单位乙烯综合能耗的数据集
+            if (Integer.parseInt(myEaf.getId()) == 17) {
+                secondList.add(myEaf);
+            }
+        }
+        //对数据进行打印
+        print();
+        //图表的初始化设置
+        initChart(lineChart);
+        //曲线的展示
+        showLineChart();
+    }
+    //3、对图表进行初始化---查询周期为每小时
     private  void initChart(final LineChart lineChart) {
         /***图表设置***/
         //是否展示网格线
@@ -270,7 +301,30 @@ public class EADataChartShow extends AppCompatActivity {
         });
         createMakerView();
     }
-    //2.1、对图表进行初始化---查询周期为天
+
+    //4、对按查询周期为每天的数据进行初始化
+    private void initDayData(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .url("http://10.6.76.128:8080/PEEMES/EADayServlet")
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    Looper.prepare();
+                    String reponseData = response.body().string();
+                    parseJSONWithGsonDay(reponseData);
+                    Looper.loop();
+                }catch (Exception e){
+                    e.printStackTrace();
+                    Log.d("GetEAFiveMinute","连接服务器获取每天更新的数据异常，请检查IP地址是否对");
+                }
+            }
+        }).start();
+    }
+    //5、对图表进行初始化---查询周期为天
     private  void initDayChart(final LineChart lineChart) {
         /***图表设置***/
         //是否展示网格线
@@ -355,7 +409,118 @@ public class EADataChartShow extends AppCompatActivity {
         });
         createMakerView();
     }
-    //3、对曲线进行初始化
+    //6、对数据进行解析----查询周期为天
+    public  void parseJSONWithGsonDay(String responseData){
+        Gson gson = new Gson();
+        //对json格式的数据进行解析，然后存在list集合中
+        List<EAFiveMinuteParameter> fiveMinuteList = gson.fromJson(responseData,
+                new TypeToken<List<EAFiveMinuteParameter>>(){}.getType());
+        //遍历list结合，把解析的数据传入到eaFiveMinutesList
+        if (firstList.size() > 0) {
+            firstList.clear();
+        }
+        if (secondList.size() > 0) {
+            secondList.clear();
+        }
+        for(EAFiveMinuteParameter eaf: fiveMinuteList){
+            EAFiveMinuteParameter myEaf = new EAFiveMinuteParameter(eaf.getId(),eaf.getClock(),eaf.getVal());
+            //对不同的参数进行去值，放到相应的数组中
+            if (Integer.parseInt(myEaf.getId()) == 16) {
+                firstList.add(myEaf);
+                //xList.add(myEaf.getClock());
+            }
+            //获得单位乙烯综合能耗的数据集
+            if (Integer.parseInt(myEaf.getId()) == 17) {
+                secondList.add(myEaf);
+            }
+        }
+        //对数据进行打印
+        print();
+        //图表的初始化设置
+        initDayChart(lineChart);
+        //曲线的展示
+        showLineChart();
+    }
+
+    //7、对查询周期为每周的数据尽心初始化
+    private void initWeekData(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .url("http://10.6.76.128:8080/PEEMES/EAWeekServlet")
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    Looper.prepare();
+                    String reponseData = response.body().string();
+                    parseJSONWithGsonWeek(reponseData);
+                    Looper.loop();
+                }catch (Exception e){
+                    e.printStackTrace();
+                    Log.d("GetEAFiveMinute","连接服务器获取每周更新的数据异常，请检查IP地址是否对");
+                }
+            }
+        }).start();
+    }
+    //8、对数据进行解析----查询周期为天
+    public  void parseJSONWithGsonWeek(String responseData){
+        Gson gson = new Gson();
+        //对json格式的数据进行解析，然后存在list集合中
+        List<EAFiveMinuteParameter> fiveMinuteList = gson.fromJson(responseData,
+                new TypeToken<List<EAFiveMinuteParameter>>(){}.getType());
+        //遍历list结合，把解析的数据传入到eaFiveMinutesList
+        if (firstList.size() > 0) {
+            firstList.clear();
+        }
+        if (secondList.size() > 0) {
+            secondList.clear();
+        }
+        for(EAFiveMinuteParameter eaf: fiveMinuteList){
+            EAFiveMinuteParameter myEaf = new EAFiveMinuteParameter(eaf.getId(),eaf.getClock(),eaf.getVal());
+            //对不同的参数进行去值，放到相应的数组中
+            if (Integer.parseInt(myEaf.getId()) == 16) {
+                firstList.add(myEaf);
+                //xList.add(myEaf.getClock());
+            }
+            //获得单位乙烯综合能耗的数据集
+            if (Integer.parseInt(myEaf.getId()) == 17) {
+                secondList.add(myEaf);
+            }
+        }
+        //对数据进行打印
+        print();
+        //图表的初始化设置
+        initDayChart(lineChart);
+        //曲线的展示
+        showLineChart();
+    }
+
+    //9、对查询周期为每月的数据进行初始化
+    private void initMonthData(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .url("http://10.6.76.128:8080/PEEMES/EAMonthServlet")
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    Looper.prepare();
+                    String reponseData = response.body().string();
+                    parseJSONWithGsonWeek(reponseData);
+                    Looper.loop();
+                }catch (Exception e){
+                    e.printStackTrace();
+                    Log.d("GetEAFiveMinute","连接服务器获取每周更新的数据异常，请检查IP地址是否对");
+                }
+            }
+        }).start();
+    }
+
+    //10、对曲线进行初始化
     private  void initLineDataSet(LineDataSet lineDataSet, int color, LineDataSet.Mode mode) {
         lineDataSet.setColor(color);
         lineDataSet.setCircleColor(color);
@@ -375,7 +540,7 @@ public class EADataChartShow extends AppCompatActivity {
             lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         }
     }
-    //4、对曲线进行展示
+    //11、对曲线进行展示
     public  void showLineChart() {
         //乙烯收率的数据集
         List<Entry> entriesYixi = new ArrayList<>();
@@ -410,72 +575,7 @@ public class EADataChartShow extends AppCompatActivity {
         lineData.setDrawValues(false);
         lineChart.setData(lineData);
     }
-    //5、对数据进行解析
-    public  void parseJSONWithGson(String responseData){
-        Gson gson = new Gson();
-        //对json格式的数据进行解析，然后存在list集合中
-        List<EAFiveMinuteParameter> fiveMinuteList = gson.fromJson(responseData,
-                new TypeToken<List<EAFiveMinuteParameter>>(){}.getType());
-        //遍历list结合，把解析的数据传入到eaFiveMinutesList
-        if (firstList.size() > 0) {
-            firstList.clear();
-        }
-        if (secondList.size() > 0) {
-            secondList.clear();
-        }
-        for(EAFiveMinuteParameter eaf: fiveMinuteList){
-            EAFiveMinuteParameter myEaf = new EAFiveMinuteParameter(eaf.getId(),eaf.getClock(),eaf.getVal());
-            //对不同的参数进行去值，放到相应的数组中
-            if (Integer.parseInt(myEaf.getId()) == 16) {
-                firstList.add(myEaf);
-                //xList.add(myEaf.getClock());
-                }
-            //获得单位乙烯综合能耗的数据集
-            if (Integer.parseInt(myEaf.getId()) == 17) {
-                secondList.add(myEaf);
-            }
-        }
-        //对数据进行打印
-        print();
-        //图表的初始化设置
-        initChart(lineChart);
-        //曲线的展示
-        showLineChart();
-    }
-    //
-    //5.1、对数据进行解析----查询周期为天
-    public  void parseJSONWithGsonDay(String responseData){
-        Gson gson = new Gson();
-        //对json格式的数据进行解析，然后存在list集合中
-        List<EAFiveMinuteParameter> fiveMinuteList = gson.fromJson(responseData,
-                new TypeToken<List<EAFiveMinuteParameter>>(){}.getType());
-        //遍历list结合，把解析的数据传入到eaFiveMinutesList
-        if (firstList.size() > 0) {
-            firstList.clear();
-        }
-        if (secondList.size() > 0) {
-            secondList.clear();
-        }
-        for(EAFiveMinuteParameter eaf: fiveMinuteList){
-            EAFiveMinuteParameter myEaf = new EAFiveMinuteParameter(eaf.getId(),eaf.getClock(),eaf.getVal());
-            //对不同的参数进行去值，放到相应的数组中
-            if (Integer.parseInt(myEaf.getId()) == 16) {
-                firstList.add(myEaf);
-                //xList.add(myEaf.getClock());
-            }
-            //获得单位乙烯综合能耗的数据集
-            if (Integer.parseInt(myEaf.getId()) == 17) {
-                secondList.add(myEaf);
-            }
-        }
-        //对数据进行打印
-        print();
-        //图表的初始化设置
-        initDayChart(lineChart);
-        //曲线的展示
-        showLineChart();
-    }
-    //6、对firstList进行打印输出
+    //12、对firstList进行打印输出
     private  void print(){
         for(int i = 0 ;i < firstList.size();i++){
             Log.d("print函数",firstList.get(i).getId()+"  "+firstList.get(i).getVal()+"  "+firstList.get(i).getClock());
@@ -486,7 +586,7 @@ public class EADataChartShow extends AppCompatActivity {
             Log.d("print函数",secondList.get(i).getId()+"  "+secondList.get(i).getVal()+"  "+secondList.get(i).getClock());
         }
     }
-    //7、字符串到日期的转换 "2010-05-04 12:34:23"得到12:34:23
+    //13、字符串到日期的转换 "2010-05-04 12:34:23"得到12:34:23
     private  String stringToDate(String str){
         String time = null;
         try{
@@ -499,7 +599,7 @@ public class EADataChartShow extends AppCompatActivity {
         }
         return time;
     }
-    //7.1、字符串到日期的转换 "2010-05-04 12:34:23"得到2010-05-04
+    //14、字符串到日期的转换 "2010-05-04 12:34:23"得到2010-05-04
     private  String stringToDataYear(String str){
         String time = null;
         try{
@@ -512,20 +612,20 @@ public class EADataChartShow extends AppCompatActivity {
         }
         return time;
     }
-    //8、创建覆盖物
+    //15、创建覆盖物
     public  void createMakerView(){
         DetailMarkerView detailMarkerView = new DetailMarkerView(this,R.layout.chart_item);
         detailMarkerView.setChartView(lineChart);
         //detailMarkerView.setChartView(lineChart);
         lineChart.setMarker(detailMarkerView);
     }
-    //9、手动刷新的具体逻辑
+    //16、手动刷新的具体逻辑
     private void refreshData(){
         initData();
         swipeRefreshLayout.setRefreshing(false);
         Toast.makeText(this,"数据更新成功",Toast.LENGTH_SHORT).show();
     }
-    //10、注销定时器
+    //17、注销定时器
     @Override
     protected void onDestroy() {
         if (timer != null) {
@@ -534,71 +634,6 @@ public class EADataChartShow extends AppCompatActivity {
         }
         super.onDestroy();
     }
-    //11、对按查询周期为每天的数据进行初始化
-    private void initDayData(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try{
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EADayServlet")
-                            .build();
-                    Response response = client.newCall(request).execute();
-                    Looper.prepare();
-                    String reponseData = response.body().string();
-                    parseJSONWithGsonDay(reponseData);
-                    Looper.loop();
-                }catch (Exception e){
-                    e.printStackTrace();
-                    Log.d("GetEAFiveMinute","连接服务器获取每天更新的数据异常，请检查IP地址是否对");
-                }
-            }
-        }).start();
-    }
-    //12、对查询周期为每周的数据尽心初始化
-    private void initWeekData(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try{
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EAWeekServlet")
-                            .build();
-                    Response response = client.newCall(request).execute();
-                    Looper.prepare();
-                    String reponseData = response.body().string();
-                    parseJSONWithGsonDay(reponseData);
-                    Looper.loop();
-                }catch (Exception e){
-                    e.printStackTrace();
-                    Log.d("GetEAFiveMinute","连接服务器获取每周更新的数据异常，请检查IP地址是否对");
-                }
-            }
-        }).start();
-    }
-    //13、对查询周期为每月的数据进行初始化
-    //http://10.6.76.128:8080/PEEMES/EAMonthServlet
-    private void initMonthData(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try{
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EAMonthServlet")
-                            .build();
-                    Response response = client.newCall(request).execute();
-                    Looper.prepare();
-                    String reponseData = response.body().string();
-                    parseJSONWithGson(reponseData);
-                    Looper.loop();
-                }catch (Exception e){
-                    e.printStackTrace();
-                    Log.d("GetEAFiveMinute","连接服务器获取每周更新的数据异常，请检查IP地址是否对");
-                }
-            }
-        }).start();
-    }
+
+
 }

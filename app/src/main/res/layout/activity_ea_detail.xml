@@ -42,7 +42,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
                 android:id="@+id/ea_detail_picture"
                 android:layout_gravity="center" />
             <TextView
@@ -51,7 +51,12 @@
                 android:textSize="20dp"
                 android:text="文字说明"
                 android:layout_gravity="center"
-                android:gravity="center" />
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#000000"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,14 +65,19 @@
                 android:gravity="center"
                 android:hint="文字说明"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="20dp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="数学表达式"
                 android:textSize="20dp"
                 android:layout_gravity="center"
-                android:gravity="center"/>
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#000000"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

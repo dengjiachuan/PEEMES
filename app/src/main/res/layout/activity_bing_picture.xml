@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fff">
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -11,23 +10,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/main_text_title"
+            android:id="@+id/bing_title"
             android:layout_centerInParent="true"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:hint="title"/>
         <Button
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:id="@+id/main_button_back"
-            android:text="返回"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/bing_back"
+            android:background="@mipmap/back"
             android:layout_marginLeft="10dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"/>
     </RelativeLayout>
-
-    <ListView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/main_listView"/>
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bing_imageView"/>
+    </ScrollView>
 
 </LinearLayout>

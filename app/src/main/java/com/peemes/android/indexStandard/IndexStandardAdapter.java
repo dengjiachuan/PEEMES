@@ -70,7 +70,7 @@ public class IndexStandardAdapter extends RecyclerView.Adapter<IndexStandardAdap
                 RequestBody requestBody = FormBody.create(MediaType
                         .parse("application/json; charset = utf-8"),json);
                 Request request = new Request.Builder()
-                        .url("http://10.6.102.10:8080/PEEMES/NewIndexStandardValServlet")
+                        .url("http://10.6.76.128:8080/PEEMES/NewIndexStandardValServlet")
                         .post(requestBody)
                         .build();
                 Call call = client.newCall(request);

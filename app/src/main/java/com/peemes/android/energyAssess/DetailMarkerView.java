@@ -98,17 +98,5 @@ public class DetailMarkerView extends MarkerView {
     public String concat( float value,String title){
         return title + String.valueOf(value);
     }
-    //重写getOffsetForDrawingAtPoint ，分别处理各种边界情况的偏移
-    //@Override
-    //public MPPointF getOffsetForDrawingAtPoint(float posX, float posY) {
-        //float posX, float pos 指的是markerView左上角的点在图表上的位置；
-       // MPPointF offset = getOffset();
-        //获取整个图表的实例
-        //Chart chart = getChartView();
-        //获取整个markerView的宽度和高度
-        //float width = getWidth();
-        //float heigt = getHeight();
-        //Log.d("heigt + width"," "+width +" "+heigt+" "+chart.getWidth()+" "+chart.getHeight());
-        //return offset;
-    //}
+
 }

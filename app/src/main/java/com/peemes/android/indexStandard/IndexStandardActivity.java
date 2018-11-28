@@ -3,6 +3,7 @@ package com.peemes.android.indexStandard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -30,9 +32,8 @@ import okhttp3.Response;
 
 public class IndexStandardActivity extends AppCompatActivity {
     private List<Index> indexList = new ArrayList<>();
-    private Button buttonBack;
-    private TextView textViewTitle;
-
+    //下拉刷新操作
+    private SwipeRefreshLayout refreshLayout;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,21 +44,48 @@ public class IndexStandardActivity extends AppCompatActivity {
             actionBar.hide();
         }
         //注册控件，获取控件的实例化
-        buttonBack = (Button)findViewById(R.id.button_standard_back);
-        textViewTitle = (TextView)findViewById(R.id.textView_standard_title);
+        Button buttonBack = (Button) findViewById(R.id.button_standard_back);
+        TextView textViewTitle = (TextView) findViewById(R.id.textView_standard_title);
         //设置标题
         textViewTitle.setText("指标基准值");
         //对指标基准值进行初始化
         initIndexStandard();
-        //获取RecyclerView的实例
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView_standard);
-        //创建LinearLayoutManager对象，用于设置到RecyclerView中,用于指定RecyclerView的布局
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        //创建一个适配器
-        IndexStandardAdapter adapter = new IndexStandardAdapter(indexList);
-        //完成适配器设置，建立recyclerView和数据之间的真正的联系。
-        recyclerView.setAdapter(adapter);
+        //对下拉刷新操作进行注册
+        refreshLayout = (SwipeRefreshLayout)findViewById(R.id.index_swipe_refresh);
+        refreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                initIndexStandard();
+                refreshLayout.setRefreshing(false);
+            }
+        });
+        /*//从登录界面中获取登录的相关参数
+        Intent intent = getIntent();
+        String userid = intent.getStringExtra("userid");
+        if (userid == null) {
+            userid = "1";
+        }
+        int num = Integer.parseInt(userid);
+        if (num>100) {
+            Toast.makeText(IndexStandardActivity.this,"您的权限为一般用户，不能查看该页内容",Toast.LENGTH_LONG).show();
+        }
+        if (num>10 && num <=100) {
+            Toast.makeText(IndexStandardActivity.this,"您的权限为普通管理员，不能查看该页内容",Toast.LENGTH_LONG).show();
+        }
+        if(num>=0 && num <10){*/
+            //获取RecyclerView的实例
+            RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView_standard);
+            //创建LinearLayoutManager对象，用于设置到RecyclerView中,用于指定RecyclerView的布局
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.addItemDecoration(new ItemDecoration(this));
+            //创建一个适配器
+            IndexStandardAdapter adapter = new IndexStandardAdapter(indexList);
+            //完成适配器设置，建立recyclerView和数据之间的真正的联系。
+            recyclerView.setAdapter(adapter);
+        //}
+
         //设置返回按钮
         buttonBack.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -76,7 +104,7 @@ public class IndexStandardActivity extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.102.10:8080/PEEMES/IndexStandardValServlet")
+                            .url("http://10.6.76.128:8080/PEEMES/IndexStandardValServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     //从服务端获取JSON格式的数据
@@ -124,7 +152,9 @@ public class IndexStandardActivity extends AppCompatActivity {
             listID.remove(1);
             listVal.remove(1);
         }
-
+        if (indexList.size()>0) {
+            indexList.clear();
+        }
         for(int i= 0; i<listID.size();i++){
             Index index = new Index(stringName[i],listVal.get(i),stringUOM[i],listID.get(i));
             indexList.add(index);

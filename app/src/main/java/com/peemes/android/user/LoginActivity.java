@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.peemes.android.MainActivity;
 import com.peemes.android.R;
+import com.peemes.android.ZheNengCoefficient.ZheNengCoefficientActivity;
+import com.peemes.android.indexStandard.IndexStandardActivity;
 
 import java.io.IOException;
 
@@ -31,14 +33,13 @@ import okhttp3.Response;
 
 /**
  * Created by cshao on 2018/11/17.
+ * 用户登录界面
  */
 
 public class LoginActivity extends AppCompatActivity {
     private EditText userID;
     private EditText userName;
     private EditText userPassword;
-    private Button buttonLogin;
-    private Button buttonRegister;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private CheckBox rememberPassword;
@@ -52,8 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         userID = (EditText)findViewById(R.id.userID);
         userName = (EditText)findViewById(R.id.account);
         userPassword = (EditText)findViewById(R.id.password);
-        buttonLogin = (Button)findViewById(R.id.login_buttton);
-        buttonRegister = (Button)findViewById(R.id.register_button);
+        Button buttonLogin = (Button) findViewById(R.id.login_buttton);
+        Button buttonRegister = (Button) findViewById(R.id.register_button);
         rememberPassword = (CheckBox)findViewById(R.id.rememeber_password);
         boolean isRemember = sharedPreferences.getBoolean("remember_password",false);
         //判断是否需要记住密码
@@ -102,9 +103,8 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d("LoginActivity",res);
                         if (res.equals("{\"success\":\"success\"}")) {
                             backState = true;
-
                             Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
-                        } else if (res.equals("{\"success\":\"failed\"}666")) {
+                        } else if (res.equals("{\"success\":\"failed\"}")) {
                             Toast.makeText(LoginActivity.this,"用户不存在",Toast.LENGTH_SHORT).show();
                         }else {
                             Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
@@ -123,7 +123,10 @@ public class LoginActivity extends AppCompatActivity {
                         editor.clear();
                     }
                     editor.apply();
+                    //把用户号传给折能参数的活动页，然后根据用户号来判断想用的等级
+                    //在启动活动的同时把用户号传给MAinActivity
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                    intent.putExtra("userid",id);
                     startActivity(intent);
                     finish();
                 }else {

@@ -71,6 +71,9 @@ public class EAFiveFenliActivity extends AppCompatActivity {
         String val = null;
         String uom = null;
         // String time = null;
+        if (eaFiveList.size()>0) {
+            eaFiveList.clear();
+        }
         for(int i = 0; i< GetEAFiveMinute.eaFiveMinutesListParameter.size();i++){
             //得到GetEAFiveMinute的ID号
             int num2 = Integer.parseInt(GetEAFiveMinute.eaFiveMinutesListParameter.get(i).getId());

@@ -26,7 +26,7 @@ public class ShowYixiEnergyParameterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.title);
+        setContentView(R.layout.title_detal);
         //注册标题栏的相关控件
         Button backButton = (Button)findViewById(R.id.button_title_back);
         TextView textViewTitle = (TextView)findViewById(R.id.textView_title_text);
@@ -56,8 +56,8 @@ public class ShowYixiEnergyParameterActivity extends AppCompatActivity {
         String time1 = String.format("%tF",date);
         String time2 = String.format("%tT",date);
         String time = time1+" "+time2;
-        ParameterMontor parameterMontor = new ParameterMontor("能源名称","位号","实时值","单位","时间");
-        parameterMontorList.add(parameterMontor);
+        //ParameterMontor parameterMontor = new ParameterMontor("能源名称","位号","实时值","单位","时间");
+        //parameterMontorList.add(parameterMontor);
         ParameterMontor parameterMontor1 = new ParameterMontor("工业水AD","FIQ_19113","0.3516","t/h",time);
         parameterMontorList.add(parameterMontor1);
         ParameterMontor parameterMontor2 = new ParameterMontor("循环水AD","FI_19107","44456.5","t/h",time);

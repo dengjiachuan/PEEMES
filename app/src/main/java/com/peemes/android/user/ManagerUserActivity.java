@@ -3,6 +3,7 @@ package com.peemes.android.user;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -28,6 +29,8 @@ import okhttp3.Response;
  */
 
 public class ManagerUserActivity extends AppCompatActivity{
+    //实现下拉刷新操作
+    private SwipeRefreshLayout refreshLayout;
     private List<User> userList = new ArrayList<>();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,10 +39,8 @@ public class ManagerUserActivity extends AppCompatActivity{
         //对控件进行注册，以获取实例
         Button buttonBack = (Button)findViewById(R.id.user_button);
         TextView textViewTitle = (TextView)findViewById(R.id.user_title);
-        //TextView textViewName = (TextView)findViewById(R.id.user_name);
-        //TextView textViewNumber = (TextView)findViewById(R.id.user_number);
-        //TextView textViewOpertor = (TextView)findViewById(R.id.user_opertor);
-        ListView listView = (ListView)findViewById(R.id.user_listview);
+        final ListView listView = (ListView)findViewById(R.id.user_listview);
+        refreshLayout = (SwipeRefreshLayout)findViewById(R.id.user_swipe_refresh);
         //对原来的题目进行隐藏
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -61,6 +62,18 @@ public class ManagerUserActivity extends AppCompatActivity{
                 finish();
             }
         });
+        //下拉刷新操作
+        refreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                initUser();
+                //配置适配器
+                UserAdapter adapter = new UserAdapter(ManagerUserActivity.this,R.layout.user_item,userList);
+                listView.setAdapter(adapter);
+                refreshLayout.setRefreshing(false);
+            }
+        });
     }
     private void initUser(){
         //新开一个线程，从服务器获取数据
@@ -70,7 +83,7 @@ public class ManagerUserActivity extends AppCompatActivity{
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.12.124:8080/PEEMES/UserServlet")
+                            .url("http://10.6.76.128:8080/PEEMES/UserServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     //从服务器端接收到的json格式的数据
@@ -88,6 +101,9 @@ public class ManagerUserActivity extends AppCompatActivity{
         Gson gson = new Gson();
         //用一个集合接收从服务端传过来的数据
         List<User> list = gson.fromJson(jsonData,new TypeToken<List<User>>(){}.getType());
+        if (userList.size()>0) {
+            userList.clear();
+        }
         for(User user:list){
             User myUser = new User(user.getUserID(),user.getUserName(),user.getPassWord(),user.getPartmentID(),
                     user.getPrivGrade(),user.getLastLogin());
