@@ -1,10 +1,11 @@
 package com.peemes.android.ZheNengCoefficient;
 
+
 /**
  * Created by cshao on 2018/10/24.
  */
 
-public class ZheNengParameter {
+public class ZheNengParameter{
     private String id;
     private String name;
     private String val;

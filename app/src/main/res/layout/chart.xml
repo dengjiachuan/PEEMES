@@ -38,7 +38,8 @@
                 android:text="系统级能效评估指标实时值"
                 android:layout_gravity="center"
                 android:gravity="center_vertical"
-                android:textSize="18dp"/>
+                android:textSize="18dp"
+                android:layout_marginLeft="5dp"/>
         </LinearLayout>
         <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
@@ -47,13 +48,15 @@
             <com.github.mikephil.charting.charts.LineChart
                 android:layout_width="match_parent"
                 android:layout_height="380dp"
-                android:id="@+id/dynamic_chart" />
+                android:id="@+id/dynamic_chart"
+                android:layout_margin="5dp"/>
         </android.support.v4.widget.SwipeRefreshLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="请选择查看周期："
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:layout_marginLeft="5dp"/>
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -91,5 +94,33 @@
                 android:id="@+id/chart_rg_year"
                 android:text="年"/>
         </RadioGroup>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="4"
+                android:text="查看更多参数的趋势图，请点击右边的按钮"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/chart_more_detail"
+                android:text="趋势图"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="温馨提示：默认情况下，查看周期为每小时"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="5dp"/>
     </LinearLayout>
 </ScrollView>

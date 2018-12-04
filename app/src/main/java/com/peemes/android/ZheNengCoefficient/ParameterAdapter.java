@@ -39,7 +39,7 @@ public class ParameterAdapter extends RecyclerView.Adapter<ParameterAdapter.View
         TextView textView_name;
         EditText editText_val;
         TextView textView_uom;
-        public ViewHolder(View view){
+        private ViewHolder(View view){
             super(view);
             button_modify = (Button)view.findViewById(R.id.button_item_modify);
             textView_id = (TextView)view.findViewById(R.id.textview_item_id);

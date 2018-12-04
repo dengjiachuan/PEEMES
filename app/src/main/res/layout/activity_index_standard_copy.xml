@@ -69,9 +69,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/index_swipe_refresh">
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/recyclerView_standard"/>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/test_listview"/>
+
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

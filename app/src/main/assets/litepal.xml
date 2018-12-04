@@ -2,7 +2,6 @@
     <dbname value = "peemes_data"/>
     <version value = "2"/>
     <list>
-        <mapping class="com.peemes.android.db.IndexStandardVal"/>
         <mapping class="com.peemes.android.ZheNengCoefficient.ZheNengParameter"/>
         <mapping class="com.peemes.android.energyAssess.EnergyAssessParameter"/>
         <mapping class="com.peemes.android.indexStandard.Index"/>

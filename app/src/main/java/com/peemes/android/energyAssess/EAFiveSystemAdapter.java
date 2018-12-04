@@ -99,9 +99,6 @@ public class EAFiveSystemAdapter extends ArrayAdapter<EAFive>{
                 //传递数学表达式
                 intent.putExtra("math",math[position]);
                 view.getContext().startActivity(intent);
-                if (EAFiveSystemActivity.eaFiveList.size()>0) {
-                    EAFiveSystemActivity.eaFiveList.clear();
-                }
             }
         });
         return view;

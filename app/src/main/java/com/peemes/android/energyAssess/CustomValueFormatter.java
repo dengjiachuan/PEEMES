@@ -14,7 +14,6 @@ public class CustomValueFormatter implements IAxisValueFormatter {
     public CustomValueFormatter(List<String> mList){
         this.mList = mList;
     }
-
     @Override
     public String getFormattedValue(float value, AxisBase axis) {
         return mList.get((int)value);
