@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                 String json = gson.toJson(user);
                 RequestBody requestBody = FormBody.create(MediaType.parse("application/json; charset = utf-8"),json);
                 Request request = new Request.Builder()
-                        .url("http://10.6.76.128:8080/PEEMES/LoginActivity")
+                        .url("http://10.6.62.14:8080/PEEMES/LoginActivity")
                         .post(requestBody)
                         .build();
                 Call call = client.newCall(request);
@@ -127,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                     //在启动活动的同时把用户号传给MAinActivity
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                     intent.putExtra("userid",id);
+                    intent.putExtra("username",account);
                     startActivity(intent);
                     finish();
                 }else {

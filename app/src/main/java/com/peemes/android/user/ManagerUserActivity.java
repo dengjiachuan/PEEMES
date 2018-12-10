@@ -57,7 +57,7 @@ public class ManagerUserActivity extends AppCompatActivity{
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ManagerUserActivity.this, MainActivity.class);
+                Intent intent = new Intent(ManagerUserActivity.this, SystemListActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -83,7 +83,7 @@ public class ManagerUserActivity extends AppCompatActivity{
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/UserServlet")
+                            .url("http://10.6.62.14:8080/PEEMES/UserServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     //从服务器端接收到的json格式的数据

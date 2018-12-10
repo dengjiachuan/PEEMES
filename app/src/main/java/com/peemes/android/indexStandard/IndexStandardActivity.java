@@ -103,7 +103,7 @@ public class IndexStandardActivity extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/IndexStandardValServlet")
+                            .url("http://10.6.62.14:8080/PEEMES/IndexStandardValServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     //从服务端获取JSON格式的数据

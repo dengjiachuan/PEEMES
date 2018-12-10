@@ -96,7 +96,7 @@ public class ZheNengCoefficientActivity extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/ZheNengCanShuServlet")
+                            .url("http://10.6.62.14:8080/PEEMES/ZheNengCanShuServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();

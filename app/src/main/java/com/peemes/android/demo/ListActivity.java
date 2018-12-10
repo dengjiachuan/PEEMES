@@ -105,7 +105,7 @@ public class ListActivity extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EAFiveMinuteServlet")
+                            .url("http://10.6.62.14:8080/PEEMES/EAFiveMinuteServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();

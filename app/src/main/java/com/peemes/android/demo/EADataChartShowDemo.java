@@ -202,7 +202,7 @@ public class EADataChartShowDemo extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EAFiveMinuteServlet")
+                            .url("http://10.6.62.14:8080/PEEMES/EAFiveMinuteServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();
@@ -415,7 +415,7 @@ public class EADataChartShowDemo extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EADayServlet")
+                            .url("http://10.6.62.14:8080/PEEMES/EADayServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();
@@ -565,7 +565,7 @@ public class EADataChartShowDemo extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EAWeekServlet")
+                            .url("http://10.6.62.14:8080/PEEMES/EAWeekServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();
@@ -717,7 +717,7 @@ public class EADataChartShowDemo extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EAMonthServlet")
+                            .url("http://10.6.62.14:8080/PEEMES/EAMonthServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();

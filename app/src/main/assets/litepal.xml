@@ -1,13 +1,8 @@
 <litepal>
     <dbname value = "peemes_data"/>
-    <version value = "2"/>
+    <version value = "3"/>
     <list>
-        <mapping class="com.peemes.android.ZheNengCoefficient.ZheNengParameter"/>
-        <mapping class="com.peemes.android.energyAssess.EnergyAssessParameter"/>
-        <mapping class="com.peemes.android.indexStandard.Index"/>
-        <mapping class="com.peemes.android.monitorParameter.ParameterMontor"/>
-        <mapping class="com.peemes.android.energyAssess.EAFiveMinuteParameter"/>
-        <mapping class="com.peemes.android.energyAssess.EAFive"/>
-        <mapping class="com.peemes.android.user.User"/>
+        <mapping class="com.peemes.android.util.OperatorUser"/>
+        <mapping class="com.peemes.android.producePlan.PlanTable"/>
     </list>
 </litepal>
