@@ -1,4 +1,4 @@
-package com.peemes.android.demo;
+package com.peemes.android.yixiRunning;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.peemes.android.MainActivity;
 import com.peemes.android.R;
-import com.peemes.android.util.*;
 
 import java.io.IOException;
 

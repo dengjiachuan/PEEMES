@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.peemes.android.MainActivity;
 import com.peemes.android.R;
+import com.peemes.android.util.GetSomething;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,7 +104,7 @@ public class IndexStandardActivity extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.62.14:8080/PEEMES/IndexStandardValServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/IndexStandardValServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     //从服务端获取JSON格式的数据

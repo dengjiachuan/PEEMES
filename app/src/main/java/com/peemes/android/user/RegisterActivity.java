@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.peemes.android.R;
+import com.peemes.android.util.GetSomething;
 
 import java.io.IOException;
 
@@ -88,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                     RequestBody requestBody = FormBody.create(
                             MediaType.parse("application/json; charset = utf-8"),json);
                     Request request = new Request.Builder()
-                            .url("http://10.6.62.14:8080/PEEMES/RegistreServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/RegistreServlet")
                             .post(requestBody)
                             .build();
                     Call call = client.newCall(request);

@@ -2,26 +2,20 @@ package com.peemes.android;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.peemes.android.ZheNengCoefficient.ZheNengCoefficientActivity;
-import com.peemes.android.demo.BingActivity;
-import com.peemes.android.demo.EADataChartShowDemo;
+import com.peemes.android.yixiRunning.EADataChartShowDemo;
 import com.peemes.android.energyAssess.EnergyAssessActivity;
-import com.peemes.android.energyAssess.EADataChartShow;
 import com.peemes.android.gongyiquanmao.GyqmActivity;
 import com.peemes.android.indexStandard.IndexStandardActivity;
 import com.peemes.android.liuchengjiankong.LcjkActivity;
 import com.peemes.android.monitorParameter.ParaweterMonitorActivity;
-import com.peemes.android.producePlan.PlanListActivity;
 import com.peemes.android.producePlan.PlanMainListActivity;
-import com.peemes.android.user.ManagerUserActivity;
 import com.peemes.android.user.SystemListActivity;
 import com.peemes.android.util.OperatorUser;
 

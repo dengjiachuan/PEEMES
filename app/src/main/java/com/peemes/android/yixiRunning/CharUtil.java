@@ -1,4 +1,4 @@
-package com.peemes.android.demo;
+package com.peemes.android.yixiRunning;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;

@@ -32,6 +32,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.peemes.android.MainActivity;
 import com.peemes.android.R;
+import com.peemes.android.util.GetSomething;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -186,7 +187,7 @@ public class EADataChartShow extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EAFiveMinuteServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/EAFiveMinuteServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();
@@ -361,7 +362,7 @@ public class EADataChartShow extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EADayServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/EADayServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();
@@ -536,7 +537,7 @@ public class EADataChartShow extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EAWeekServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/EAWeekServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();
@@ -711,7 +712,7 @@ public class EADataChartShow extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.76.128:8080/PEEMES/EAMonthServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/EAMonthServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();

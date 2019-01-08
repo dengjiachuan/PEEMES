@@ -5,8 +5,5 @@ package com.peemes.android.util;
  */
 
 public class GetSomething {
-    public String GetIp(){
-        String ip = "10.6.62.14";
-        return ip;
-    }
+    public static String IP = "10.6.96.151";
 }

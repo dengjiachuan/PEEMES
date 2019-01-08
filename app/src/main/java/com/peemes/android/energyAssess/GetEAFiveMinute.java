@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.peemes.android.util.GetSomething;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,7 @@ public class GetEAFiveMinute {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.62.14:8080/PEEMES/EAFiveLastServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/EAFiveLastServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     String reponseData = response.body().string();

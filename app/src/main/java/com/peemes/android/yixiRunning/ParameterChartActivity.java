@@ -1,4 +1,4 @@
-package com.peemes.android.demo;
+package com.peemes.android.yixiRunning;
 
 import android.content.Intent;
 import android.graphics.Color;

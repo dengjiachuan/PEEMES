@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.peemes.android.R;
-import com.peemes.android.demo.BingActivity;
 
 import java.util.ArrayList;
 import java.util.List;

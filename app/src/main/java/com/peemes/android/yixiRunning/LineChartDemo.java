@@ -1,4 +1,4 @@
-package com.peemes.android.demo;
+package com.peemes.android.yixiRunning;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.peemes.android.MainActivity;
 import com.peemes.android.R;
-import com.peemes.android.energyAssess.EAFiveMinuteParameter;
 import com.peemes.android.energyAssess.GetEAFiveMinute;
 
 import java.util.ArrayList;

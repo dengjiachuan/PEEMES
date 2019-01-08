@@ -12,12 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.peemes.android.MainActivity;
 import com.peemes.android.R;
-import com.peemes.android.demo.BingActivity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by cshao on 2018/12/9.

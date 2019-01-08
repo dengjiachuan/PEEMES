@@ -1,4 +1,4 @@
-package com.peemes.android.demo;
+package com.peemes.android.yixiRunning;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,16 +27,14 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.peemes.android.MainActivity;
 import com.peemes.android.R;
-import com.peemes.android.energyAssess.CustomValueFormatter;
-import com.peemes.android.energyAssess.DetailMarkerView;
 import com.peemes.android.energyAssess.EAFiveMinuteParameter;
+import com.peemes.android.util.GetSomething;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -202,7 +200,7 @@ public class EADataChartShowDemo extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.62.14:8080/PEEMES/EAFiveMinuteServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/EAFiveMinuteServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();
@@ -415,7 +413,7 @@ public class EADataChartShowDemo extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.62.14:8080/PEEMES/EADayServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/EADayServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();
@@ -565,7 +563,7 @@ public class EADataChartShowDemo extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.62.14:8080/PEEMES/EAWeekServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/EAWeekServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();
@@ -717,7 +715,7 @@ public class EADataChartShowDemo extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.62.14:8080/PEEMES/EAMonthServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/EAMonthServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     Looper.prepare();

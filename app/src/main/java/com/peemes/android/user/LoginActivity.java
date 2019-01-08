@@ -1,7 +1,12 @@
 package com.peemes.android.user;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Looper;
 import android.preference.PreferenceManager;
@@ -19,6 +24,7 @@ import com.peemes.android.MainActivity;
 import com.peemes.android.R;
 import com.peemes.android.ZheNengCoefficient.ZheNengCoefficientActivity;
 import com.peemes.android.indexStandard.IndexStandardActivity;
+import com.peemes.android.util.GetSomething;
 
 import java.io.IOException;
 
@@ -44,7 +50,9 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     private CheckBox rememberPassword;
     private boolean backState = false;//用来记住是否登录成功，接收来自服务器返回的值
-
+    //注册广播相关的参数
+    private IntentFilter intentFilter;
+    private NetworkChangeReceiver networkChangeReceiver;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                 String json = gson.toJson(user);
                 RequestBody requestBody = FormBody.create(MediaType.parse("application/json; charset = utf-8"),json);
                 Request request = new Request.Builder()
-                        .url("http://10.6.62.14:8080/PEEMES/LoginActivity")
+                        .url("http://"+ GetSomething.IP+":8080/PEEMES/LoginActivity")
                         .post(requestBody)
                         .build();
                 Call call = client.newCall(request);
@@ -144,5 +152,32 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+        intentFilter = new IntentFilter();
+        intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        networkChangeReceiver = new NetworkChangeReceiver();
+        registerReceiver(networkChangeReceiver,intentFilter);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(networkChangeReceiver);
+    }
+    class NetworkChangeReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //判断当前网络状态是否可用
+            ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.isAvailable()) {
+                int netType = networkInfo.getType();
+                if (netType == ConnectivityManager.TYPE_WIFI) {
+                    Toast.makeText(context,"当前网络连接可用",Toast.LENGTH_LONG).show();
+                } else if (netType == ConnectivityManager.TYPE_MOBILE) {
+                    Toast.makeText(context,"当前网络状态为移动数据，不能登录该系统，请切换至内网",Toast.LENGTH_LONG).show();
+                }
+            }else {
+                Toast.makeText(context,"当前无网络连接，请连接内网以后登录该系统",Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }

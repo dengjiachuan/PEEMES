@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.peemes.android.MainActivity;
 import com.peemes.android.R;
+import com.peemes.android.util.GetSomething;
 
 
 import java.util.ArrayList;
@@ -96,7 +97,7 @@ public class ZheNengCoefficientActivity extends AppCompatActivity {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.6.62.14:8080/PEEMES/ZheNengCanShuServlet")
+                            .url("http://"+ GetSomething.IP+":8080/PEEMES/ZheNengCanShuServlet")
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
